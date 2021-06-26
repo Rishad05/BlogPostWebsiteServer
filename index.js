@@ -54,6 +54,13 @@ client.connect(err => {
                   })
               })
             });
+            app.get('/blogs/:id',(req, res) =>{
+                const id = ObjectID(req.params.id)
+                blogCollection.find({_id : id})
+                .toArray((err,blogs) => {
+                res.send(blogs[0]);
+                })
+            })
 
  console.log('success')
 });
